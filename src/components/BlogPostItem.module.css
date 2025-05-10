@@ -1,25 +1,51 @@
 .blogPostItem {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
   padding: 20px;
+  font-family: 'Arial', sans-serif;
 }
 
-.title {
-  text-decoration: none;
-  color: #333;
+.title h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10px;
 }
 
 .title:hover {
   color: #007BFF;
+  text-decoration: none;
 }
 
 .summary {
   font-size: 16px;
-  color: #666;
+  color: #666666;
+  margin-bottom: 8px;
 }
 
 .date {
   font-size: 14px;
-  color: #999;
+  color: #999999;
+}
+.author {
+  font-size: 14px;
+  color: #999999;
 }
 
+@media (max-width: 768px) {
+  .title h2 {
+    font-size: 20px;
+  }
+
+  .summary {
+    font-size: 14px;
+  }
+
+  .date {
+    font-size: 12px;
+  }
+
+  .blogPostItem {
+    padding: 15px;
+  }
+}

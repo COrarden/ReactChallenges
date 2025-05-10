@@ -6,21 +6,21 @@ import BlogPostList from './components/BlogPostList';
 const samplePosts = [
   {
     id: '1',
-    title: 'Title 1',
+    title: 'Title Post 1',
     summary: 'Text 1',
     date: '2023-01-01',
     url: '/posts/1',
   },
   {
     id: '2',
-    title: 'Title 2',
+    title: 'Title Post 2',
     summary: 'Text 2',
     date: '2023-02-15',
     url: '/posts/2',
   },
   {
     id: '3',
-    title: 'Title 1',
+    title: 'Title Post 3',
     summary: 'Text 3',
     date: '2023-03-10',
     url: '/posts/3',

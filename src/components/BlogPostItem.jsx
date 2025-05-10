@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './BlogPostItem.module.css';
 
-export default function BlogPostItem({ title, summary, date, url }) {
+export default function BlogPostItem({ title, summary, date, url }){
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     year: 'numeric', month: 'long', day: 'numeric'
   });
