@@ -1,8 +1,10 @@
-// src/App.jsx
 import React from 'react';
 import './App.css'; 
+import Header from './components/Header';
 import BlogPostList from './components/BlogPostList';
+import styles from './components/Header.module.css';
 
+// Sample data for blog posts
 const samplePosts = [
   {
     id: '1',
@@ -29,9 +31,13 @@ const samplePosts = [
 
 export default function App() {
   return (
-    <main style={{ padding: '2rem' }}>
-      <h1>Blog Posts</h1>
-      <BlogPostList posts={samplePosts} />
-    </main>
+    <>
+      <Header />
+
+      <main className={styles.main}>
+        <h2>Blog Posts</h2>
+        <BlogPostList posts={samplePosts} />
+      </main>
+    </>
   );
 }
