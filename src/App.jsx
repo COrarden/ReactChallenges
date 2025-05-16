@@ -15,9 +15,8 @@ function App() {
   );
 }
 
-export default App;
-
-
+// Sample data for blog posts
+// This data would typically come from an API or a database
 const samplePosts = [
 
   {
