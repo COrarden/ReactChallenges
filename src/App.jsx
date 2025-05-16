@@ -2,6 +2,21 @@ import React from 'react';
 
 import BlogPostList from './components/BlogPostList/BlogPostList';
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import BlogPost from './components/BlogPost';
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/posts/:id" element={<BlogPost />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
 
 const samplePosts = [
 
