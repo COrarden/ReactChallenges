@@ -1,26 +1,40 @@
 // BlogPostList.jsx
-import React from "react";
-import BlogPostItem from "../BlogPostItem/BlogPostItem";
-import styles from "./BlogPostList.module.css";
 
-const BlogPostList = ({ posts }) => {
-  if (!posts || posts.length === 0) {
-    return <p className={styles.noPosts}>No blog posts available.</p>;
-  }
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-  return (
-    <div className={styles.blogPostList}>
-      {posts.map((post) => (
-        <BlogPostItem
-          key={post.id}
-          id={post.id}
-          title={post.title}
-          summary={post.summary}
-          date={post.date}
-        />
-      ))}
-    </div>
-  );
+const mockPosts = {
+  '1': {
+    title: 'Example Post',
+    content: '<p>This is the full blog post content with <strong>HTML</strong> support.</p>',
+    author: 'Jane Doe',
+    date: '2023-01-01',
+  },
 };
 
-export default BlogPostList;
+export default function BlogPost() {
+  const { id } = useParams();
+  const [post, setPost] = useState(null);
+
+  useEffect(() => {
+    setPost(mockPosts[id]);
+  }, [id]);
+
+  if (!post) return <p>Loading...</p>;
+
+  const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  return (
+    <article style={{ padding: "1rem" }}>
+      <h1>{post.title}</h1>
+      <p>
+        <em>By {post.author} on {formattedDate}</em>
+      </p>
+      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+    </article>
+  );
+}
