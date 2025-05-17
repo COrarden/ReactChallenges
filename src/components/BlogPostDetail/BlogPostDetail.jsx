@@ -1,32 +1,41 @@
-// src/components/BlogPostDetail/BlogPostDetail.jsx
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import styles from './BlogPostDetail.module.css';
 
-const BlogPostDetail = ({ title, content, author, date }) => {
-  // Handle missing data
-  if (!title || !content || !author || !date) {
-    return <p className={styles.notFound}>Blog post not found</p>;
+const mockPosts = {
+  '1': {
+    title: 'Getting Started with React',
+    content: '<p>This is a detailed post on React basics.</p>',
+    author: 'Jane Developer',
+    date: '2023-01-01',
+  },
+  '2': {
+    title: 'CSS Grid vs. Flexbox',
+    content: '<p>Understand how Flexbox differs from Grid.</p>',
+    author: 'John Smith',
+    date: '2023-02-15',
   }
+};
 
-  const formattedDate = new Date(date).toLocaleDateString('en-US', {
+const BlogPostDetail = () => {
+  const { id } = useParams();
+  const post = mockPosts[id];
+
+  if (!post) return <p>Blog post not found</p>;
+
+  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
 
-  // Enhance content to safely open links in new tab
-  const enhancedContent = content.replace(
-    /<a\s+(?![^>]*target=)/g,
-    '<a target="_blank" rel="noopener noreferrer" '
-  );
-
   return (
     <article className={styles.blogPost}>
-      <h1 className={styles.title}>{title}</h1>
-      <p className={styles.meta}>By {author} on {formattedDate}</p>
+      <h1 className={styles.title}>{post.title}</h1>
+      <p className={styles.meta}>By {post.author} on {formattedDate}</p>
       <div
         className={styles.content}
-        dangerouslySetInnerHTML={{ __html: enhancedContent }}
+        dangerouslySetInnerHTML={{ __html: post.content }}
       />
     </article>
   );
