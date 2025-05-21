@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './BlogPostDetail.module.css';
-import ConfirmationDialog from '../ConfirmationDialog/ConfirmationDialog'; // imported and used correctly
+import ConfirmationDialog from '../ConfirmationDialog/ConfirmationDialog';
 
 const mockPosts = {
   '1': {
@@ -45,23 +45,28 @@ const BlogPostDetail = () => {
     navigate('/');
   };
 
+
   return (
     <article className={styles.blogPost}>
       <h1 className={styles.title}>{post.title}</h1>
       <p className={styles.meta}>By {post.author} on {formattedDate}</p>
-      <div
-        className={styles.content}
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
+      <div className={styles.content} dangerouslySetInnerHTML={{ __html: post.content }} />
 
       <button className={styles.deleteButton} onClick={handleDeleteClick}>
         Delete
       </button>
 
-      {showConfirm && (
+      {showFirstConfirm && (
         <ConfirmationDialog
-          onConfirm={handleConfirmDelete}
-          onCancel={handleCancel}
+          onConfirm={handleFirstConfirm}
+          onCancel={handleCancelFirst}
+        />
+      )}
+
+      {showFinalConfirm && (
+        <FinalDeleteDialog
+          onConfirm={handleFinalDelete}
+          onCancel={handleCancelFinal}
         />
       )}
     </article>
