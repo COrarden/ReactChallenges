@@ -2,32 +2,19 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './BlogPostDetail.module.css';
 import ConfirmationDialog from '../ConfirmationDialog/ConfirmationDialog';
+import FinalDeleteDialog from '../FinalDeleteDialog/FinalDeleteDialog';
 
 const mockPosts = {
-  '1': {
-    title: 'Getting Started with React',
-    content: '<p>This is a detailed post on React basics.</p>',
-    author: 'Jane Developer',
-    date: '2023-01-01',
-  },
-  '2': {
-    title: 'CSS Grid vs. Flexbox',
-    content: '<p>Understand how Flexbox differs from Grid.</p>',
-    author: 'John Smith',
-    date: '2023-02-15',
-  },
-  '3': {
-    title: '100 men vs 1 Gorilla',
-    content: '<p>Who will win in this fight?</p>',
-    author: 'John Smith',
-    date: '2023-02-15',
-  }
+  '1': { title: 'Getting Started with React', content: '<p>Learn React basics.</p>', author: 'Jane', date: '2023-01-01' },
+  '2': { title: 'CSS Grid vs. Flexbox', content: '<p>Flexbox vs. Grid explained.</p>', author: 'John', date: '2023-02-15' },
+  '3': { title: '100 men vs 1 Gorilla', content: '<p>Epic showdown!</p>', author: 'John', date: '2023-02-15' }
 };
 
 const BlogPostDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [showFirstConfirm, setShowFirstConfirm] = useState(false);
+  const [showFinalConfirm, setShowFinalConfirm] = useState(false);
   const post = mockPosts[id];
 
   if (!post) return <p>Blog post not found</p>;
@@ -38,13 +25,20 @@ const BlogPostDetail = () => {
     day: 'numeric',
   });
 
-  const handleDeleteClick = () => setShowConfirm(true);
-  const handleCancel = () => setShowConfirm(false);
-  const handleConfirmDelete = () => {
-    delete mockPosts[id]; // Mock deletion logic
-    navigate('/');
+  const handleDeleteClick = () => setShowFirstConfirm(true);
+  const handleCancelFirst = () => setShowFirstConfirm(false);
+  const handleCancelFinal = () => setShowFinalConfirm(false);
+
+  const handleFirstConfirm = () => {
+    setShowFirstConfirm(false);
+    setShowFinalConfirm(true);
   };
 
+  const handleFinalDelete = () => {
+    delete mockPosts[id]; // Mock deletion
+    setShowFinalConfirm(false);
+    navigate('/');
+  };
 
   return (
     <article className={styles.blogPost}>

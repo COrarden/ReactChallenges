@@ -1,5 +1,5 @@
 import React from 'react';
-import './ConfirmationDialog.css'; // Reuse same styles
+import '../ConfirmationDialog/ConfirmationDialog.module.css'; // Reuse same styles
 
 function FinalDeleteDialog({ onConfirm, onCancel }) {
   return (
