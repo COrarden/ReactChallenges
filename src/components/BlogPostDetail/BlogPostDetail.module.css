@@ -1,3 +1,4 @@
+/* Blog Post Container */
 .blogPost {
   max-width: 800px;
   margin: 0 auto;
@@ -8,7 +9,9 @@
   color: #333333;
 }
 
-.title {
+/* Title and Metadata */
+.title,
+.blog-title {
   font-size: 36px;
   font-weight: bold;
   color: #333333;
@@ -29,6 +32,7 @@
   color: #999999;
 }
 
+/* Content Area */
 .content {
   margin-top: 30px;
   font-size: 18px;
@@ -36,7 +40,6 @@
   color: #333333;
 }
 
-/* Link styling */
 .content a {
   color: #007BFF;
   text-decoration: underline;
@@ -46,6 +49,7 @@
   color: #0056b3;
 }
 
+/* Message Not Found */
 .notFound {
   text-align: center;
   color: #aa0000;
@@ -53,13 +57,14 @@
   margin-top: 2rem;
 }
 
-/* === Mobile View Overrides (≤768px) === */
+/* Mobile View Overrides (≤768px) */
 @media (max-width: 768px) {
   .blogPost {
     padding: 20px;
   }
 
-  .title {
+  .title,
+  .blog-title {
     font-size: 28px;
     margin-bottom: 15px;
   }
