@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import BlogPostList from './components/BlogPostList/BlogPostList';
 import BlogPostDetail from './components/BlogPostDetail/BlogPostDetail';
 import BlogPostForm from './components/BlogPostForm/BlogPostForm';
+//import RecycleBin from './components/RecycleBin/RecycleBin'; Add RecycleBin component when implemented//
 
 // Sample blog post data (temporary mock data)
 const samplePosts = [
