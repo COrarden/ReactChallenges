@@ -12,7 +12,7 @@ describe('BlogPostItem', () => {
 
   test('renders the blog title', () => {
     render(<BlogPostItem {...mockPost} />);
-    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(mockPost.title);
+    expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent(mockPost.title);
   });
 
   test('renders the summary', () => {
@@ -29,7 +29,7 @@ describe('BlogPostItem', () => {
     const onSelectMock = jest.fn();
     render(<BlogPostItem {...mockPost} onSelect={onSelectMock} />);
 
-    const clickableTitleWrapper = screen.getByRole('heading', { level: 2 }).parentElement;
+    const clickableTitleWrapper = screen.getByRole('heading', { level: 3 }).parentElement;
     fireEvent.click(clickableTitleWrapper);
 
     expect(onSelectMock).toHaveBeenCalledTimes(1);
@@ -38,7 +38,7 @@ describe('BlogPostItem', () => {
 
   test('does not crash if onSelect is not provided', () => {
     render(<BlogPostItem {...mockPost} />);
-    const clickableTitleWrapper = screen.getByRole('heading', { level: 2 }).parentElement;
+    const clickableTitleWrapper = screen.getByRole('heading', { level: 3 }).parentElement;
 
     expect(() => fireEvent.click(clickableTitleWrapper)).not.toThrow();
   });

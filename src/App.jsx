@@ -12,7 +12,7 @@ import BlogPostDetail from "./components/BlogPostDetail/BlogPostDetail";
 import BlogPostForm from "./components/BlogPostForm/BlogPostForm";
 import DeleteButton from "./components/DeleteButton/DeleteButton";
 import ConfirmationDialog from "./components/ConfirmationDialog/ConfirmationDialog";
-import NavBar from "./components/Layout/NavBar";
+import Layout from "./components/Layout/Layout"; // ✅ NEW
 
 const initialPosts = [
   {
@@ -79,30 +79,6 @@ const PostsPage = ({ posts }) => {
   const navigate = useNavigate();
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end", // Keeps it aligned to the right
-          marginBottom: "20px",
-        }}
-      >
-        <button
-          onClick={() => navigate("/posts/new")}
-          style={{
-            padding: "8px 16px",
-            backgroundColor: "#007BFF",
-            color: "#fff",
-            border: "none",
-            borderRadius: "4px",
-            fontSize: "14px",
-            cursor: "pointer",
-            marginRight: "40px", // Pushes button 40px from the right
-          }}
-        >
-          + New Post
-        </button>
-      </div>
-
       <BlogPostList posts={posts} onSelect={(id) => navigate(`/posts/${id}`)} />
     </div>
   );
@@ -133,7 +109,7 @@ const PostPage = ({ posts, setPosts }) => {
           padding: "10px 15px",
           fontSize: "14px",
           marginRight: "40px",
-          marginTop: "20px",
+          marginTop: "45px",
           backgroundColor: "#007BFF",
           color: "#fff",
           border: "none",
@@ -209,29 +185,30 @@ const App = () => {
 
   return (
     <Router>
-      <NavBar /> //wraps the entire app with NavBar
-      <div>
-        <h1>Blog Posts</h1>
-        <Routes>
-          <Route path="/posts" element={<PostsPage posts={posts} />} />
-          <Route
-            path="/posts/new"
-            element={<CreatePost onCreate={handleCreatePost} />}
-          />
-          <Route
-            path="/posts/:id"
-            element={<PostPage posts={posts} setPosts={setPosts} />}
-          />
-          <Route
-            path="/posts/:id/edit"
-            element={<EditPost posts={posts} onUpdate={handleUpdatePost} />}
-          />
-          <Route path="*" element={<Navigate to="/posts" replace />} />
-        </Routes>
-      </div>
+      <Layout>
+        <div>
+          <h2 style={{ textAlign: "center", marginTop: "20px" }}>Blog Posts</h2>
+
+          <Routes>
+            <Route path="/posts" element={<PostsPage posts={posts} />} />
+            <Route
+              path="/posts/new"
+              element={<CreatePost onCreate={handleCreatePost} />}
+            />
+            <Route
+              path="/posts/:id"
+              element={<PostPage posts={posts} setPosts={setPosts} />}
+            />
+            <Route
+              path="/posts/:id/edit"
+              element={<EditPost posts={posts} onUpdate={handleUpdatePost} />}
+            />
+            <Route path="*" element={<Navigate to="/posts" replace />} />
+          </Routes>
+        </div>
+      </Layout>
     </Router>
   );
 };
-
 
 export default App;

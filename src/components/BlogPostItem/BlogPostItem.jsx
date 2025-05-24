@@ -15,7 +15,7 @@ const BlogPostItem = ({ id, title, summary, date, onSelect }) => {
         onClick={() => onSelect && onSelect(id)}
         style={{ cursor: "pointer" }}
       >
-        <h2>{title}</h2>
+        <h3>{title}</h3>
       </div>
       <p className={styles.summary}>{summary}</p>
       <p className={styles.date}>Published on {formattedDate}</p>
