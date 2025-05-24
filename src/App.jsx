@@ -90,18 +90,20 @@ const PostPage = ({ posts, setPosts }) => {
   const post = posts.find((p) => p.id === id);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const [comments, setComments] = useState([
+   const [comments, setComments] = useState([
     {
+      id: "11111",
       postId: "1",
       name: "Alice",
-      text: "Great introuction to React!",
-      date: "2023-12-25T14:45:00z"
+      text: "Great introduction to React!",
+      date: "2023-12-25T14:45:00Z",
     },
     {
+      id: "11112",
       postId: "2",
       name: "Bob",
       text: "CSS Grid helped me structure my layout perfectly.",
-      date: "2024-01-05T09:30:00z"
+      date: "2024-01-05T09:30:00Z",
     },
   ]);
 
