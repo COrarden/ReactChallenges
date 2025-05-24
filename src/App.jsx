@@ -90,6 +90,21 @@ const PostPage = ({ posts, setPosts }) => {
   const post = posts.find((p) => p.id === id);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  const [comments, setComments] = useState([
+    {
+      postId: "1",
+      name: "Alice",
+      text: "Great introuction to React!",
+      date: "2023-12-25T14:45:00z"
+    },
+    {
+      postId: "2",
+      name: "Bob",
+      text: "CSS Grid helped me structure my layout perfectly.",
+      date: "2024-01-05T09:30:00z"
+    },
+  ]);
+
   const handleDelete = () => {
     const updatedPosts = posts.filter((p) => p.id !== id);
     setPosts(updatedPosts);
