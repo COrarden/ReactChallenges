@@ -6,6 +6,20 @@ const NavBar = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!isMobileMenuOpen);
+         useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setMobileMenuOpen(true);
+      } else {
+        setMobileMenuOpen(false); // auto-close when above 768
+      }
+    };
+
+    handleResize(); // Run on mount
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
     };
     return (
         <nav className={styles.navbar}>
@@ -30,8 +44,8 @@ const NavBar = () => {
                 {isMobileMenuOpen && (
                     <div className={styles.mobileMenu}>
                         <Link to="/" onClick={toggleMobileMenu}>Home</Link>
-                        <Link to="/blog" onClick={toggleMobileMenu}>About</Link>
-                        <Link to="/about" onClick={toggleMobileMenu}>Contact</Link>
+                        <Link to="/blog" onClick={toggleMobileMenu}>Blog</Link>
+                        <Link to="/about" onClick={toggleMobileMenu}>About</Link>
                     </div>
                 )}
 

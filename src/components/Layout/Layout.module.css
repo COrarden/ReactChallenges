@@ -1,11 +1,19 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.main {
+  flex: 1; 
+  padding-top: 4rem; 
+}
+
 .footer {
   background-color: #444;
   color: #ccc;
   padding: 1rem;
   text-align: center;
   font-size: 0.875rem;
-  position: relative;
-  bottom: 0;
   width: 100%;
-  margin-top: 2rem;
 }

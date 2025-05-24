@@ -10,13 +10,17 @@
   width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap;
+  transition: background-color 0.3s ease;
 }
 
 .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
 }
 
 .logo {
@@ -41,36 +45,26 @@
 
 .links {
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
   align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
   color: white;
   font-weight: bold;
 }
 
-/* Links for large screens */
-/* .desktopLinks {
-  display: flex;
-  gap: 1rem;
-}
-
-.desktopLinks a {
-  color: white;
-  text-decoration: none;
-  font-size: 0.95rem;
-} */
-
 /* Hamburger icon */
 .hamburger {
   display: none;
+  font-size: 2rem;
+  color: white;
   background: none;
   border: none;
-  font-size: 1.5rem;
-  color: white;
   cursor: pointer;
 }
+
+.hamburger:focus {
+  outline: 2px solid white;
+}
+
 
 /* Mobile menu styles */
 .mobileMenu {
@@ -89,7 +83,7 @@
 
 /* Show hamburger and mobile menu on small screens */
 @media (max-width: 768px) {
-  .desktopLinks {
+  .links {
     display: none;
   }
 
@@ -99,32 +93,53 @@
 
   .mobileMenu {
     display: flex;
-  }
-}
-
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-  .menuIcon {
-    display: flex;
-  }
-
-  .navLinks {
-    display: none;
     flex-direction: column;
     position: absolute;
     top: 60px;
-    right: 10px;
-    background: #ffffff;
-    padding: 10px;
+    right: 2rem;
+    background-color: #007BFF;
+    padding: 1rem;
     border-radius: 5px;
+    gap: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.3s ease-out;
   }
 
-  .navLinks.active {
-    display: flex;
+  .mobileMenu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
   }
+}
 
-  .navLinks li {
-    margin: 10px 0;
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
   }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 2rem;
+  background-color: #007BFF;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  animation: slideDown 0.3s ease-out;
+  z-index: 999;
+}
+
+.mobileMenu a {
+  color: white;
+  text-decoration: none;
+  margin: 0.5rem 0;
+  font-weight: bold;
 }
