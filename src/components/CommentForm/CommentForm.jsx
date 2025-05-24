@@ -3,7 +3,7 @@ import styles from "./CommentForm.module.css";
 
 const CommentForm = ({ onSubmit, isLoggedIn, userName }) => {
   const [name, setName] = useState(userName || "");
-  ... //Fill in the code here//
+  //... //Fill in the code here//
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,7 +41,7 @@ const CommentForm = ({ onSubmit, isLoggedIn, userName }) => {
           />
         </div>
         
-        ... //Fill in the code here//
+        //... //Fill in the code here//
 
       )}
 
