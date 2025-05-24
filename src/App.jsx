@@ -12,6 +12,7 @@ import BlogPostDetail from "./components/BlogPostDetail/BlogPostDetail";
 import BlogPostForm from "./components/BlogPostForm/BlogPostForm";
 import DeleteButton from "./components/DeleteButton/DeleteButton";
 import ConfirmationDialog from "./components/ConfirmationDialog/ConfirmationDialog";
+import NavBar from "./components/Layout/NavBar";
 
 const initialPosts = [
   {
@@ -208,6 +209,7 @@ const App = () => {
 
   return (
     <Router>
+      <NavBar /> //wraps the entire app with NavBar
       <div>
         <h1>Blog Posts</h1>
         <Routes>
@@ -230,5 +232,6 @@ const App = () => {
     </Router>
   );
 };
+
 
 export default App;
